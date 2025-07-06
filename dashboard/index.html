@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Running Log Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Running Stats Dashboard</h1>
+    <div class="stats">
+      <div class="stat-card">
+        <h2>Total Runs</h2>
+        <p id="total-runs">0</p>
+      </div>
+      <div class="stat-card">
+        <h2>Total Distance</h2>
+        <p id="total-distance">0 km</p>
+      </div>
+      <div class="stat-card">
+        <h2>Avg. Distance</h2>
+        <p id="avg-distance">0 km</p>
+      </div>
+    </div>
+    <div class="recent-runs">
+      <h2>Recent Runs</h2>
+      <ul id="runs-list"></ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
