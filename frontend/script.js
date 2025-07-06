@@ -1,42 +1,75 @@
-document.getElementById('startRunBtn').addEventListener('click', function() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('runForm').style.display = 'block';
-});
-
-document.getElementById('runLogForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const run = {
-        distance: document.getElementById('distance').value,
-        duration: document.getElementById('duration').value,
-        date: document.getElementById('date').value
-    };
-
-    console.log('Run logged:', run);
-    addRunToUI(run);
-
-    this.reset();
-    document.getElementById('runForm').style.display = 'none';
-    document.getElementById('home').style.display = 'block';
-});
-
-function addRunToUI(run) {
-    const runsList = document.getElementById('runsList');
-    const runElement = document.createElement('div');
-    runElement.className = 'run-item';
-    runElement.innerHTML = `
-        <h3>${run.date}</h3>
-        <p>Distance: ${run.distance} km</p>
-        <p>Duration: ${run.duration} minutes</p>
-    `;
-    runsList.prepend(runElement);
-}
-
-// Sample runs for demo
-const sampleRuns = [
-    { distance: 5.2, duration: 30, date: '2023-05-15' },
-    { distance: 3.8, duration: 25, date: '2023-05-10' },
-    { distance: 10.0, duration: 55, date: '2023-05-05' }
-];
-
-sampleRuns.forEach(addRunToUI);
+// Define the backend API URL (update if your backend runs on a different port)
+// const API_URL = 'http://localhost:3001/api';
+//
+// // Example: Fetch running logs from the backend
+// async function fetchRuns() {
+//   try {
+//       const response = await fetch(`${API_URL}/runs`);
+//           if (!response.ok) throw new Error('Failed to fetch runs');
+//               const runs = await response.json();
+//                   console.log('Fetched runs:', runs);
+//                       return runs;
+//                         } catch (error) {
+//                             console.error('Error fetching runs:', error);
+//                                 return [];
+//                                   }
+//                                   }
+//
+//                                   // Example: Add a new run to the backend
+//                                   async function addRun(newRun) {
+//                                     try {
+//                                         const response = await fetch(`${API_URL}/runs`, {
+//                                               method: 'POST',
+//                                                     headers: { 'Content-Type': 'application/json' },
+//                                                           body: JSON.stringify(newRun),
+//                                                               });
+//                                                                   if (!response.ok) throw new Error('Failed to add run');
+//                                                                       return await response.json();
+//                                                                         } catch (error) {
+//                                                                             console.error('Error adding run:', error);
+//                                                                                 return null;
+//                                                                                   }
+//                                                                                   }
+//
+//                                                                                   // Call these functions where needed (e.g., on page load or button click)
+//                                                                                   fetchRuns().then(runs => {
+//                                                                                     // Update your UI with the fetched runs
+//                                                                                       console.log('Runs to display:', runs);
+//                                                                                       });// Define the backend API URL (update if your backend runs on a different port)
+//                                                                                       const API_URL = 'http://localhost:3001/api';
+//
+//                                                                                       // Example: Fetch running logs from the backend
+//                                                                                       async function fetchRuns() {
+//                                                                                         try {
+//                                                                                             const response = await fetch(`${API_URL}/runs`);
+//                                                                                                 if (!response.ok) throw new Error('Failed to fetch runs');
+//                                                                                                     const runs = await response.json();
+//                                                                                                         console.log('Fetched runs:', runs);
+//                                                                                                             return runs;
+//                                                                                                               } catch (error) {
+//                                                                                                                   console.error('Error fetching runs:', error);
+//                                                                                                                       return [];
+//                                                                                                                         }
+//                                                                                                                         }
+//
+//                                                                                                                         // Example: Add a new run to the backend
+//                                                                                                                         async function addRun(newRun) {
+//                                                                                                                           try {
+//                                                                                                                               const response = await fetch(`${API_URL}/runs`, {
+//                                                                                                                                     method: 'POST',
+//                                                                                                                                           headers: { 'Content-Type': 'application/json' },
+//                                                                                                                                                 body: JSON.stringify(newRun),
+//                                                                                                                                                     });
+//                                                                                                                                                         if (!response.ok) throw new Error('Failed to add run');
+//                                                                                                                                                             return await response.json();
+//                                                                                                                                                               } catch (error) {
+//                                                                                                                                                                   console.error('Error adding run:', error);
+//                                                                                                                                                                       return null;
+//                                                                                                                                                                         }
+//                                                                                                                                                                         }
+//
+//                                                                                                                                                                         // Call these functions where needed (e.g., on page load or button click)
+//                                                                                                                                                                         fetchRuns().then(runs => {
+//                                                                                                                                                                           // Update your UI with the fetched runs
+//                                                                                                                                                                             console.log('Runs to display:', runs);
+//                                                                                                                                                                             });
