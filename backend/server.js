@@ -28,3 +28,16 @@ app.post('/api/runs', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+// Add this to your existing backend routes
+app.get('/api/stats', (req, res) => {
+    const totalRuns = runs.length;
+    const totalDistance = runs.reduce((sum, run) => sum + parseFloat(run.distance), 0);
+    const totalDuration = runs.reduce((sum, run) => sum + parseInt(run.duration), 0);
+    
+    res.json({
+        totalRuns,
+        totalDistance,
+        avgPace: (totalDuration / totalDistance).toFixed(1)
+    });
+});
