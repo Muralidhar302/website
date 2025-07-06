@@ -8,7 +8,7 @@ async function updateDashboard() {
 
     // Calculate stats
     const totalRuns = runs.length;
-    const totalDistance = runs.reduce((sum, run) => sum + run.distance, 0);
+    const totalDistance = runs.reduce((sum, run) => sum + Number(run.distance), 0);
     const avgDistance = totalRuns > 0 ? (totalDistance / totalRuns).toFixed(2) : 0;
 
     // Update UI
