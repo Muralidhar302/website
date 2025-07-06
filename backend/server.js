@@ -23,7 +23,6 @@ app.post('/api/runs', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`);
 });
-const express = require('express');
 const cors = require('cors'); // Ensure 'cors' is installed (npm install cors)
 
 const app = express();
